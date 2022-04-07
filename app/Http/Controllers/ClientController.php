@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\View;
 class ClientController extends Controller
 {
     //
-    protected $categories;
+
     public function __construct()
     {
-        $this->categories = Category::all();
+        $categories = Category::all();
         $post_new = Post::orderBy('created_at', 'desc')->skip(0)->take(5)->get();
         View::share([
             'list_products_new'=>$post_new,
-            'categories' => $this->categories
+            'categories' => $categories
         ]);
     }
 
